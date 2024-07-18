@@ -36,11 +36,11 @@
   </head>
   <body>
     <div class="container">
-      <h4 class="text-center"><a href="./">Back to game</a></h4>
+      <h2 class="text-center">Instructions</h1>
+
       <p>
-        Hello! In this task, you will be playing a
-        cooking game. You will play one of two chefs
-        in a restaurant that serves various soups.
+        Hello! In this game, you will take on the role of a chef preparing meals in cooperation with your partner(s).
+        Your goal is to serve as many of the orders as you can before time ends.
       </p>
 
       <br>
@@ -49,19 +49,20 @@
 
       <h3 class="text-center">Layouts</h3>
       <p>
-        This is what one level of the game looks like:
+        This is one of the game states with annotated objects:
       </p>
-      <img class="center" src="static/images/training0.png" style="width:500px">
-      <p>
-        There are a number of objects in the game, labeled here:
-      </p>
-      <img class="center" src="static/images/training0-annotated.png" style="width:800px">
+      <img class="center" src="static/images/training0.png" style="width:800px">
+
+      <!-- <p>
+        The current all orders, bonus orders, time, and score are all displayed 
+        in an info panel below the layout.
+      </p> -->
 
       <br>
       <hr>
       <br>
 
-      <h3 class="text-center">Movement and interactions</h3>
+      <h3 class="text-center">Movement and Interactions</h3>
       <img class="center" src="static/images/space-arrows.png" style="width:250px">
       <p>
         You can move up, down, left, and right using
@@ -72,14 +73,10 @@
         You can interact with objects by facing them and pressing
         <b>spacebar</b>. Here are some examples:
         <ul>
-          <li>You can pick up ingredients (onions or tomatoes) by facing
+          <li>You can pick up ingredients by facing
             the ingredient area and pressing <b>spacebar</b>.</li>
           <li>If you are holding an ingredient, are facing an empty counter,
             and press <b>spacebar</b>, you put the ingredient on the counter.</li>
-          <li>If you are holding an ingredient, are facing a pot that is not full,
-            and press <b>spacebar</b>, you will put the ingredient in the pot.</li>
-          <li>If you are facing a pot that is non-empty, are currently holding nothing, and 
-            and press <b>spacebar</b>, you will begin cooking a soup.</li>
         </ul>
       </p>
 
@@ -90,10 +87,8 @@
         you <u><b>cannot occupy the same location</b></u>.
       </p>
       <br>
-      <hr>
-      <br>
 
-      <h3 class="text-center">Cooking</h3>
+      <!-- <h3 class="text-center">Cooking</h3>
       <img class="center" src="static/images/soup.png" style="width:250px">
       <p>
         Once an ingredient is in the pot, you can begin cooking a soup by pressing 
@@ -113,27 +108,32 @@
       </p>
 
       <br>
-      <hr>
-      <br>
 
       <h3 class="text-center">Serving</h3>
-      <img class="center" src="static/images/serving-counter.png" style="width:800px">
+      <img class="center" src="static/images/serving-counter.png" style="width:800px"> -->
       <p>
-        Once the soup is in a bowl, you can serve it by bringing it to
-        a grey serving counter.
+        Once the meal is ready, you can serve it by bringing it to
+        the delivery counter annotated with a star.
       </p>
 
       <br>
       <hr>
       <br>
 
-      <h3 class="text-center">Soups</h3>
+      <h3 class="text-center">Recipes</h3>
       <p>
-        There are 9 possible soup recipes that can be created from combinations of tomatoes
-        and onions, each with its own icon. The recipe icons and the corresponding ingredients are
-        listed below
+        Here is the list of recipes that will appear in the game.
       </p>
-      <table>
+      <br>
+      <p>
+        Tomato:
+      </p>
+      <img class="center" src="static/images/recipe-tomato.png" style="width:250px">
+      <p>
+        Salad:
+      </p>
+      <img class="center" src="static/images/recipe-salad.png" style="width:250px">
+      <!-- <table>
         <tr>
           <th>Ingredients</th>
           <th>Icon</th>
@@ -141,23 +141,20 @@
           <th>Cook Time</th>
         </tr>
         {% for num_tomatoes in range(layout_conf.max_num_ingredients + 1) %}
-          {% for num_onions in range(layout_conf.max_num_ingredients + 1) %}
-            {% if num_tomatoes + num_onions > 0 and num_onions + num_tomatoes <= layout_conf.max_num_ingredients %}
+          {% for num_lettuces in range(layout_conf.max_num_ingredients + 1) %}
+            {% if num_tomatoes + num_lettuces > 0 and num_lettuces + num_tomatoes <= layout_conf.max_num_ingredients %}
               <tr>
-                <td>{{ num_onions ~ " Onion" if num_onions }} {{ num_tomatoes ~ " Tomato" if num_tomatoes }}</td>
-                <td><img src="{{ "static/assets/new_sprites/soup_done_tomato_" ~ num_tomatoes ~ "_onion_" ~ num_onions ~ ".png" }}" style="width:75px;background-color: #e6b453;"></td>
-                <td>{{ layout_conf.onion_value * num_onions + layout_conf.tomato_value * num_tomatoes }}</td>
-                <td>{{ layout_conf.onion_time * num_onions + layout_conf.tomato_time * num_tomatoes }}</td>
+                <td>{{ num_lettuces ~ " Onion" if num_lettuces }} {{ num_tomatoes ~ " Tomato" if num_tomatoes }}</td>
+                <td><img src="{{ "static/assets/new_sprites/soup_done_tomato_" ~ num_tomatoes ~ "_onion_" ~ num_lettuces ~ ".png" }}" style="width:75px;background-color: #e6b453;"></td>
+                <td>{{ layout_conf.onion_value * num_lettuces + layout_conf.tomato_value * num_tomatoes }}</td>
+                <td>{{ layout_conf.onion_time * num_lettuces + layout_conf.tomato_time * num_tomatoes }}</td>
               </tr>
             {% endif %}
           {% endfor %}
         {% endfor %}
 
-      </table>
-
-      <br>
-      <hr>
-      <br>
+      </table> -->
+      <!-- <br>
 
       <h3 class="text-center">All Orders</h3>
       <p>
@@ -169,6 +166,7 @@
       <p>To reiterate: <b>ANY SOUP COOKED THAT IS NOT IN ALL ORDERS WILL NOT BE WORTH POINTS</b></p>
 
       <br>
+      
       <hr>
       <br>
 
@@ -190,22 +188,11 @@
         multiplies the base soup score by {{ layout_conf.order_bonus }}. Additionally, serving a soup not in the
         <b>All Orders</b> list results in zero points not matter what!
       </p>
-
       <br>
+      <hr> -->
       <hr>
       <br>
-
-      <h3 class="text-center">Goal</h3>
-      <img class="center" src="static/images/info-panel.png" style="width:500px">
-      <p>
-        Your goal in this task is to serve as many of the orders as you can
-        before each level ends.
-        The current all orders, bonus orders, time, and score are all displayed 
-        in an info panel below the layout.
-      </p>
-
-      <br>
-      <hr>
+      <h4 class="text-center"><a href="./">Back to game</a></h4>
       <br>
     </div>
   </body>

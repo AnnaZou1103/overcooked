@@ -1337,7 +1337,7 @@ class MediumLevelActionManager(object):
         return player_actions
 
     def pickup_onion_actions(self, counter_objects, only_use_dispensers=False):
-        """If only_use_dispensers is True, then only take onions from the dispensers"""
+        """If only_use_dispensers is True, then only take lettuces from the dispensers"""
         onion_pickup_locations = self.mdp.get_onion_dispenser_locations()
         if not only_use_dispensers:
             onion_pickup_locations += counter_objects["onion"]
@@ -1935,7 +1935,7 @@ class MediumLevelActionManager(object):
 #         - dishes to pots we need
 #         - onion to pots we need
 #
-#         We then determine if there are any soups/dishes/onions
+#         We then determine if there are any soups/dishes/lettuces
 #         in transit (on counters or on players) than can be
 #         brought to their destinations faster than starting off from
 #         a dispenser of the same type. If so, we consider fulfilling
@@ -1964,7 +1964,7 @@ class MediumLevelActionManager(object):
 #         pot_locations = self.mdp.get_pot_locations()
 #         full_soups_in_pots = pot_states_dict['cooking'] + pot_states_dict['ready']
 #         partially_full_soups = self.mdp.get_partially_full_pots(pot_states_dict)
-#         num_onions_in_partially_full_pots = sum([state.get_object(loc).state[1] for loc in partially_full_soups])
+#         num_lettuces_in_partially_full_pots = sum([state.get_object(loc).state[1] for loc in partially_full_soups])
 #
 #         # Calculating costs
 #         num_deliveries_to_go = goal_deliveries - state.num_delivered
@@ -2005,14 +2005,14 @@ class MediumLevelActionManager(object):
 #         forward_cost += num_pots_to_be_filled
 #
 #         # ONION COSTS
-#         total_num_onions_needed = num_pots_to_be_filled * 3 - num_onions_in_partially_full_pots
-#         onions_on_counters = objects_dict['onion']
-#         onions_in_transit = player_objects['onion'] + onions_on_counters
+#         total_num_lettuces_needed = num_pots_to_be_filled * 3 - num_lettuces_in_partially_full_pots
+#         lettuces_on_counters = objects_dict['onion']
+#         lettuces_in_transit = player_objects['onion'] + lettuces_on_counters
 #
-#         num_onions_better_than_disp, total_better_than_disp_onion_cost = \
-#             self.get_costs_better_than_dispenser(onions_in_transit, pot_locations, min_onion_to_pot_cost, total_num_onions_needed, state)
+#         num_lettuces_better_than_disp, total_better_than_disp_onion_cost = \
+#             self.get_costs_better_than_dispenser(lettuces_in_transit, pot_locations, min_onion_to_pot_cost, total_num_lettuces_needed, state)
 #
-#         min_onion_to_pot_trips = max([0, total_num_onions_needed - num_onions_better_than_disp])
+#         min_onion_to_pot_trips = max([0, total_num_lettuces_needed - num_lettuces_better_than_disp])
 #         onion_to_pot_costs = min_onion_to_pot_cost * min_onion_to_pot_trips
 #
 #         forward_cost += total_better_than_disp_onion_cost
@@ -2022,7 +2022,7 @@ class MediumLevelActionManager(object):
 #         # NOTE: as implemented makes heuristic inconsistent
 #         # for player in state.players:
 #         #     if not player.has_object():
-#         #         counter_objects = soups_on_counters + dishes_on_counters + onions_on_counters
+#         #         counter_objects = soups_on_counters + dishes_on_counters + lettuces_on_counters
 #         #         possible_features = counter_objects + pot_locations + self.mdp.get_dish_dispenser_locations() + self.mdp.get_onion_dispenser_locations()
 #         #         forward_cost += self.action_manager.min_cost_to_feature(player.pos_and_or, possible_features)
 #
@@ -2034,14 +2034,14 @@ class MediumLevelActionManager(object):
 #             print("\n" + "#"*35)
 #             print("Current state: (ml timestep {})\n".format(time))
 #
-#             print("# in transit: \t\t Soups {} \t Dishes {} \t Onions {}".format(
-#                 len(soups_in_transit), len(dishes_in_transit), len(onions_in_transit)
+#             print("# in transit: \t\t Soups {} \t Dishes {} \t lettuces {}".format(
+#                 len(soups_in_transit), len(dishes_in_transit), len(lettuces_in_transit)
 #             ))
 #
 #             # NOTE Possible improvement: consider cost of dish delivery too when considering if a
 #             # transit soup is better than dispenser equivalent
-#             print("# better than disp: \t Soups {} \t Dishes {} \t Onions {}".format(
-#                 num_soups_better_than_pot, num_dishes_better_than_disp, num_onions_better_than_disp
+#             print("# better than disp: \t Soups {} \t Dishes {} \t lettuces {}".format(
+#                 num_soups_better_than_pot, num_dishes_better_than_disp, num_lettuces_better_than_disp
 #             ))
 #
 #             print("# of trips: \t\t pot-del {} \t dish-pot {} \t onion-pot {}".format(
@@ -2127,7 +2127,7 @@ class MediumLevelActionManager(object):
 #
 #         soups_in_transit = player_objects['soup']
 #         dishes_in_transit = objects_dict['dish'] + player_objects['dish']
-#         onions_in_transit = objects_dict['onion'] + player_objects['onion']
+#         lettuces_in_transit = objects_dict['onion'] + player_objects['onion']
 #         tomatoes_in_transit = objects_dict['tomato'] + player_objects['tomato']
 #
 #         num_pot_to_delivery = max([0, num_deliveries_to_go - len(soups_in_transit)])
@@ -2135,9 +2135,9 @@ class MediumLevelActionManager(object):
 #
 #         # FIXME: the following logic might need to be discussed, when incoporating tomatoes
 #         num_pots_to_be_filled = num_pot_to_delivery - num_full_soups_in_pots
-#         num_onions_needed_for_pots = num_pots_to_be_filled * 3 - len(onions_in_transit) - num_items_in_partially_full_pots
+#         num_lettuces_needed_for_pots = num_pots_to_be_filled * 3 - len(lettuces_in_transit) - num_items_in_partially_full_pots
 #         num_tomatoes_needed_for_pots = 0
-#         num_onion_to_pot = max([0, num_onions_needed_for_pots])
+#         num_onion_to_pot = max([0, num_lettuces_needed_for_pots])
 #         num_tomato_to_pot = max([0, num_tomatoes_needed_for_pots])
 #
 #         pot_to_delivery_costs = (self.heuristic_cost_dict['pot-delivery'] + self.heuristic_cost_dict['pot-cooking']) \
@@ -2167,8 +2167,8 @@ class MediumLevelActionManager(object):
 #             print("\n" + "#" * 35)
 #             print("Current state: (ml timestep {})\n".format(time))
 #
-#             print("# in transit: \t\t Soups {} \t Dishes {} \t Onions {}".format(
-#                 len(soups_in_transit), len(dishes_in_transit), len(onions_in_transit)
+#             print("# in transit: \t\t Soups {} \t Dishes {} \t lettuces {}".format(
+#                 len(soups_in_transit), len(dishes_in_transit), len(lettuces_in_transit)
 #             ))
 #
 #             print("Trip costs: \t\t pot-del {} \t dish-pot {} \t onion-pot {}".format(

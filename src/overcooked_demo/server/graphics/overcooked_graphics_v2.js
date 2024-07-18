@@ -129,8 +129,8 @@ class OvercookedScene extends Phaser.Scene {
         let terrain_to_img = {
             ' ': 'floor.png',
             'X': 'counter.png',
-            'P': 'pot.png',
-            'O': 'onions.png',
+            'P': 'cutboard.png',
+            'O': 'lettuces.png',
             'T': 'tomatoes.png',
             'D': 'dishes.png',
             'S': 'serve.png'

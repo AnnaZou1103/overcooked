@@ -22,6 +22,12 @@ RUN echo "import os; DATA_DIR=os.path.abspath('.')" >> /overcooked_ai/src/human_
 # Install chai dependencies
 RUN pip install -e '/overcooked_ai[harl]'
 
+RUN sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
+RUN sed -i s/security.debian.org/archive.debian.org/g /etc/apt/sources.list
+RUN sed -i s/stretch-updates/stretch/g /etc/apt/sources.list
+
+RUN apt-get clean
+
 RUN apt-get -y update
 RUN apt-get install -y libgl1-mesa-dev
 

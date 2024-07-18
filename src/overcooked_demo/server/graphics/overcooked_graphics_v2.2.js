@@ -145,8 +145,8 @@ class OvercookedScene extends Phaser.Scene {
         let terrain_to_img = {
             ' ': 'floor.png',
             'X': 'counter.png',
-            'P': 'pot.png',
-            'O': 'onions.png',
+            'P': 'cutboard.png',
+            'O': 'lettuces.png',
             'T': 'tomatoes.png',
             'D': 'dishes.png',
             'S': 'serve.png'
@@ -490,8 +490,8 @@ class OvercookedScene extends Phaser.Scene {
 
     _ingredientsToSpriteFrame(ingredients, status) {
         let num_tomatoes = ingredients.filter(x => x === 'tomato').length;
-        let num_onions = ingredients.filter(x => x === 'onion').length;
-        return `soup_${status}_tomato_${num_tomatoes}_onion_${num_onions}.png`
+        let num_lettuces = ingredients.filter(x => x === 'onion').length;
+        return `soup_${status}_tomato_${num_tomatoes}_onion_${num_lettuces}.png`
     }
 }
 
