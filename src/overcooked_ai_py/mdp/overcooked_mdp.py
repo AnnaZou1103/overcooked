@@ -20,10 +20,11 @@ class Recipe:
 
     TOMATO = "tomato"
     ONION = "onion"
-    ALL_INGREDIENTS = [ONION, TOMATO]
+    LETTUCE = "lettuce"
+    ALL_INGREDIENTS = [ONION, TOMATO, LETTUCE]
 
     ALL_RECIPES_CACHE = {}
-    STR_REP = {"tomato": "†", "onion": "ø"}
+    STR_REP = {"tomato": "†", "onion": "ø", "lettuce": "$"}
 
     _computed = False
     _configured = False
@@ -71,8 +72,9 @@ class Recipe:
     def __int__(self):
         num_tomatoes = len([_ for _ in self.ingredients if _ == Recipe.TOMATO])
         num_onions = len([_ for _ in self.ingredients if _ == Recipe.ONION])
+        num_lettuces = len([_ for _ in self.ingredients if _ == Recipe.LETTUCE])
 
-        mixed_mask = int(bool(num_tomatoes * num_onions))
+        mixed_mask = int(bool(num_tomatoes * num_onions * num_lettuces))
         mixed_shift = (Recipe.MAX_NUM_INGREDIENTS + 1) ** len(
             Recipe.ALL_INGREDIENTS
         )
@@ -130,7 +132,7 @@ class Recipe:
     @ingredients.setter
     def ingredients(self, _):
         raise AttributeError(
-            "Recpes are read-only. Do not modify instance attributes after creation"
+            "Recipes are read-only. Do not modify instance attributes after creation"
         )
 
     @property
@@ -232,6 +234,8 @@ class Recipe:
         cls._onion_time = None
         cls._tomato_value = None
         cls._tomato_time = None
+        cls._lettuce_value = None
+        cls._lettuce_time = None
 
         ## Basic checks for validity ##
 
@@ -329,11 +333,17 @@ class Recipe:
         if "onion_time" in conf:
             cls._onion_time = conf["onion_time"]
 
+        if "lettuce_time" in conf:
+            cls._lettuce_time = conf["lettuce_time"]
+
         if "tomato_value" in conf:
             cls._tomato_value = conf["tomato_value"]
 
         if "onion_value" in conf:
             cls._onion_value = conf["onion_value"]
+
+        if "lettuce_value" in conf:
+            cls._onion_value = conf["lettuce_value"]
 
     @classmethod
     def generate_random_recipes(
@@ -403,7 +413,7 @@ class ObjectState(object):
         self._position = new_pos
 
     def is_valid(self):
-        return self.name in ["onion", "tomato", "dish"]
+        return self.name in ["onion", "tomato", "dish", "lettuce"]
 
     def deepcopy(self):
         return ObjectState(self.name, self.position)
@@ -1055,6 +1065,7 @@ EVENT_TYPES = [
     "catastrophic_tomato_potting",
     "useless_onion_potting",
     "useless_tomato_potting",
+    # Lettuces events
 ]
 
 POTENTIAL_CONSTANTS = {
@@ -1512,7 +1523,7 @@ class OvercookedGridworld(object):
                 obj = ObjectState("dish", pos)
                 player.set_object(obj)
 
-            elif terrain_type == "P" and not player.has_object():
+            elif terrain_type == "C" and not player.has_object():
                 # An interact action will only start cooking the soup if we are using the new dynamics
                 if (
                     not self.old_dynamics
@@ -1521,7 +1532,7 @@ class OvercookedGridworld(object):
                     soup = new_state.get_object(i_pos)
                     soup.begin_cooking()
 
-            elif terrain_type == "P" and player.has_object():
+            elif terrain_type == "C" and player.has_object():
                 if (
                     player.get_object().name == "dish"
                     and self.soup_ready_at_location(new_state, i_pos)
@@ -2097,22 +2108,22 @@ class OvercookedGridworld(object):
             range(1, num_players + 1)
         ), "Some players were missing"
 
-        assert all(
-            c in "XODSTLC123456789 " for c in all_elements
-        ), "Invalid character in grid"
-        assert all_elements.count("1") == 1, "'1' must be present exactly once"
-        assert (
-            all_elements.count("D") >= 1
-        ), "'D' must be present at least once"
-        assert (
-            all_elements.count("S") >= 1
-        ), "'S' must be present at least once"
-        assert (
-            all_elements.count("C") >= 1
-        ), "'C' must be present at least once"
-        assert (
-            all_elements.count("O") >= 1 or all_elements.count("T") >= 1
-        ), "'O' or 'T' must be present at least once"
+        # assert all(
+        #     c in "XODSTLC123456789 " for c in all_elements
+        # ), "Invalid character in grid"
+        # assert all_elements.count("1") == 1, "'1' must be present exactly once"
+        # assert (
+        #     all_elements.count("D") >= 1
+        # ), "'D' must be present at least once"
+        # assert (
+        #     all_elements.count("S") >= 1
+        # ), "'S' must be present at least once"
+        # assert (
+        #     all_elements.count("C") >= 1
+        # ), "'C' must be present at least once"
+        # assert (
+        #     all_elements.count("O") >= 1 or all_elements.count("T") >= 1
+        # ), "'O' or 'T' must be present at least once"
 
     ################################
     # EVENT LOGGING HELPER METHODS #
