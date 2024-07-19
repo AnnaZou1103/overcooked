@@ -205,24 +205,24 @@ class TestRecipe(unittest.TestCase):
                 ),
             )
 
-        only_lettuces_recipes = [
+        only_onions_recipes = [
             Recipe(["onion", "onion"]),
             Recipe(["onion", "onion", "onion"]),
         ]
         for _ in range(100):
             self.assertCountEqual(
-                only_lettuces_recipes,
+                only_onions_recipes,
                 Recipe.generate_random_recipes(
                     n=2, min_size=2, max_size=3, ingredients=["onion"]
                 ),
             )
 
         self.assertCountEqual(
-            only_lettuces_recipes,
+            only_onions_recipes,
             set(
                 [
                     Recipe.generate_random_recipes(
-                        n=1, recipes=only_lettuces_recipes
+                        n=1, recipes=only_onions_recipes
                     )[0]
                     for _ in range(100)
                 ]
@@ -236,13 +236,13 @@ class TestRecipe(unittest.TestCase):
 class TestSoupState(unittest.TestCase):
     def setUp(self):
         Recipe.configure({})
-        self.s1 = SoupState.get_soup((0, 0), num_lettuces=0, num_tomatoes=0)
-        self.s2 = SoupState.get_soup((0, 1), num_lettuces=2, num_tomatoes=1)
+        self.s1 = SoupState.get_soup((0, 0), num_onions=0, num_tomatoes=0)
+        self.s2 = SoupState.get_soup((0, 1), num_onions=2, num_tomatoes=1)
         self.s3 = SoupState.get_soup(
-            (1, 1), num_lettuces=1, num_tomatoes=0, cooking_tick=1
+            (1, 1), num_onions=1, num_tomatoes=0, cooking_tick=1
         )
         self.s4 = SoupState.get_soup(
-            (1, 0), num_lettuces=0, num_tomatoes=2, finished=True
+            (1, 0), num_onions=0, num_tomatoes=2, finished=True
         )
 
     def test_position(self):
@@ -1604,11 +1604,11 @@ class TestOvercookedEnvironment(unittest.TestCase):
                     )  # all left_out optional_features are not used
 
     def test_random_layout_generated_recipes(self):
-        only_lettuces_recipes = [
+        only_onions_recipes = [
             Recipe(["onion", "onion"]),
             Recipe(["onion", "onion", "onion"]),
         ]
-        only_lettuces_dict_recipes = [r.to_dict() for r in only_lettuces_recipes]
+        only_onions_dict_recipes = [r.to_dict() for r in only_onions_recipes]
 
         # checking if recipes are generated from mdp_params
         mdp_gen_params = {
@@ -1630,7 +1630,7 @@ class TestOvercookedEnvironment(unittest.TestCase):
         for _ in range(10):
             env.reset()
             self.assertCountEqual(
-                env.mdp.start_all_orders, only_lettuces_dict_recipes
+                env.mdp.start_all_orders, only_onions_dict_recipes
             )
             self.assertEqual(len(env.mdp.start_bonus_orders), 0)
 
@@ -1656,11 +1656,11 @@ class TestOvercookedEnvironment(unittest.TestCase):
         for _ in range(10):
             env.reset()
             self.assertCountEqual(
-                env.mdp.start_all_orders, only_lettuces_dict_recipes
+                env.mdp.start_all_orders, only_onions_dict_recipes
             )
             self.assertEqual(len(env.mdp.start_bonus_orders), 1)
             self.assertTrue(
-                env.mdp.start_bonus_orders[0] in only_lettuces_dict_recipes
+                env.mdp.start_bonus_orders[0] in only_onions_dict_recipes
             )
 
         # checking if after reset there are new recipes generated

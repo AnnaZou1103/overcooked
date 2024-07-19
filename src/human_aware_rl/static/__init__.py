@@ -115,7 +115,9 @@ LAYOUTS_WITH_DATA_2020 = set(
         "marshmallow_experiment_coordination",
         "soup_coordination",
         "you_shall_not_pass",
+        "full_divider",
+        "open_divider",
+        "partial_divider"
     ]
 )
-
 LAYOUTS_WITH_DATA = LAYOUTS_WITH_DATA_2019.union(LAYOUTS_WITH_DATA_2020)

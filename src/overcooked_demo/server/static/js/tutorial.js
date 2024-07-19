@@ -10,15 +10,15 @@ var tutorial_instructions = () => [
     <p>Mechanic: <b>Delivery</b></p>
     <p>Your goal here is to cook and deliver soups in order to earn reward. Notice how your partner is busily churning out soups</p>
     <p>See if you can copy his actions in order to cook and deliver the appropriate soup</p>
-    <p><b>Note</b>: only recipes in the <b>All Orders</b> field will earn reward. Thus, you must cook a soup with <b>exactly</b> 3 lettuces</p>
+    <p><b>Note</b>: only recipes in the <b>All Orders</b> field will earn reward. Thus, you must cook a soup with <b>exactly</b> 3 onions</p>
     <p><b>You will advance only when you have delivered the appropriate soup</b></p>
     <p>Good luck!</p>
     <br></br>
     `,
     `
     <p>Mechanic: <b>All Orders</b></p>
-    <p>Oh no! Your partner has made a grave mistake! He has mistakingly placed two lettuces in the pot</p>
-    <p>This is an issue because no recipe on the <b>All Orders</b> list can started with 2 lettuces</p>
+    <p>Oh no! Your partner has made a grave mistake! He has mistakingly placed two onions in the pot</p>
+    <p>This is an issue because no recipe on the <b>All Orders</b> list can started with 2 onions</p>
     <p>See if you can remedy the situation and cook a recipe that is indeed valid</p>
     <p><b>You will advance only when you have delivered a valid soup</b></p>
     <p>Good Luck!</p>
@@ -53,7 +53,7 @@ var tutorial_hints = () => [
         You can interact with objects by facing them and pressing
         <b>spacebar</b>. Here are some examples:
         <ul>
-          <li>You can pick up ingredients (lettuces or tomatoes) by facing
+          <li>You can pick up ingredients (onions or tomatoes) by facing
             the ingredient area and pressing <b>spacebar</b>.</li>
           <li>If you are holding an ingredient, are facing an empty counter,
             and press <b>spacebar</b>, you put the ingredient on the counter.</li>

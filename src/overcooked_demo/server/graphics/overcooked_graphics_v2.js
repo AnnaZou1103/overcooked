@@ -63,8 +63,8 @@ class GraphicsManager {
         scene_config.terrain = start_info.terrain;
         scene_config.start_state = start_info.state;
         game_config.scene = new OvercookedScene(scene_config);
-        game_config.width = scene_config.tileSize*scene_config.terrain[0].length;
-        game_config.height = scene_config.tileSize*scene_config.terrain.length;
+        game_config.width = scene_config.tileSize *scene_config.terrain[0].length;
+        game_config.height = scene_config.tileSize *scene_config.terrain.length;
         game_config.parent = graphics_config.container_id;
         this.game = new Phaser.Game(game_config);
     }
@@ -130,7 +130,7 @@ class OvercookedScene extends Phaser.Scene {
             ' ': 'floor.png',
             'X': 'counter.png',
             'P': 'cutboard.png',
-            'O': 'lettuces.png',
+            'O': 'onions.png',
             'T': 'tomatoes.png',
             'D': 'dishes.png',
             'S': 'serve.png'

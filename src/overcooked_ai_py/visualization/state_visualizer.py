@@ -95,7 +95,7 @@ class StateVisualizer:
     TILE_TO_FRAME_NAME = {
         EMPTY: "floor",
         COUNTER: "counter",
-        ONION_DISPENSER: "lettuces",
+        ONION_DISPENSER: "onions",
         TOMATO_DISPENSER: "tomatoes",
         POT: "pot",
         DISH_DISPENSER: "dishes",
@@ -424,12 +424,12 @@ class StateVisualizer:
 
     @staticmethod
     def _soup_frame_name(ingredients_names, status):
-        num_lettuces = ingredients_names.count("onion")
+        num_onions = ingredients_names.count("onion")
         num_tomatoes = ingredients_names.count("tomato")
         return "soup_%s_tomato_%i_onion_%i" % (
             status,
             num_tomatoes,
-            num_lettuces,
+            num_onions,
         )
 
     def _render_objects(self, surface, objects, grid):

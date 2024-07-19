@@ -36,7 +36,7 @@
   </head>
   <body>
     <div class="container">
-      <h2 class="text-center">Instructions</h1>
+      <h2 class="text-center">Instructions</h2>
 
       <p>
         Hello! In this game, you will take on the role of a chef preparing meals in cooperation with your partner(s).
@@ -141,13 +141,13 @@
           <th>Cook Time</th>
         </tr>
         {% for num_tomatoes in range(layout_conf.max_num_ingredients + 1) %}
-          {% for num_lettuces in range(layout_conf.max_num_ingredients + 1) %}
-            {% if num_tomatoes + num_lettuces > 0 and num_lettuces + num_tomatoes <= layout_conf.max_num_ingredients %}
+          {% for num_onions in range(layout_conf.max_num_ingredients + 1) %}
+            {% if num_tomatoes + num_onions > 0 and num_onions + num_tomatoes <= layout_conf.max_num_ingredients %}
               <tr>
-                <td>{{ num_lettuces ~ " Onion" if num_lettuces }} {{ num_tomatoes ~ " Tomato" if num_tomatoes }}</td>
-                <td><img src="{{ "static/assets/new_sprites/soup_done_tomato_" ~ num_tomatoes ~ "_onion_" ~ num_lettuces ~ ".png" }}" style="width:75px;background-color: #e6b453;"></td>
-                <td>{{ layout_conf.onion_value * num_lettuces + layout_conf.tomato_value * num_tomatoes }}</td>
-                <td>{{ layout_conf.onion_time * num_lettuces + layout_conf.tomato_time * num_tomatoes }}</td>
+                <td>{{ num_onions ~ " Onion" if num_onions }} {{ num_tomatoes ~ " Tomato" if num_tomatoes }}</td>
+                <td><img src="{{ "static/assets/new_sprites/soup_done_tomato_" ~ num_tomatoes ~ "_onion_" ~ num_onions ~ ".png" }}" style="width:75px;background-color: #e6b453;"></td>
+                <td>{{ layout_conf.onion_value * num_onions + layout_conf.tomato_value * num_tomatoes }}</td>
+                <td>{{ layout_conf.onion_time * num_onions + layout_conf.tomato_time * num_tomatoes }}</td>
               </tr>
             {% endif %}
           {% endfor %}

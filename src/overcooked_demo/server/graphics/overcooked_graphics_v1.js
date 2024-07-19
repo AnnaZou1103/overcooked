@@ -123,7 +123,7 @@ class OvercookedScene extends Phaser.Scene {
             ' ': 'floor.png',
             'X': 'counter.png',
             'P': 'cutboard.png',
-            'O': 'lettuces.png',
+            'O': 'onions.png',
             'T': 'tomatoes.png',
             'D': 'dishes.png',
             'S': 'serve.png'
