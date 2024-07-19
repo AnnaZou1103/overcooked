@@ -43,7 +43,7 @@
 		"floor.png": {
 			"frame": {
 				"x": 166,
-				"y": 1,
+				"y": 0,
 				"w": 80,
 				"h": 80
 			},
@@ -51,7 +51,7 @@
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
-				"y": 1,
+				"y": 0,
 				"w": 80,
 				"h": 80
 			},
@@ -123,6 +123,26 @@
 		"tomatoes.png": {
 			"frame": {
 				"x": 498,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"sourceSize": {
+				"w": 80,
+				"h": 80
+			}
+		},
+		"lettuces.png": {
+			"frame": {
+				"x": 581,
 				"y": 0,
 				"w": 80,
 				"h": 80
