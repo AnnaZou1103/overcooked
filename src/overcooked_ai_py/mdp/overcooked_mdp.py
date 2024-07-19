@@ -2078,6 +2078,7 @@ class OvercookedGridworld(object):
 
         # Borders must not be free spaces
         def is_not_free(c):
+            print(c)
             return c in "XODSTLC"
 
         for y in range(height):
