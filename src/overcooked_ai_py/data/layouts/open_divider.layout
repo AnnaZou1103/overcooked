@@ -8,7 +8,7 @@
                 XXXXXDX""",
     "start_bonus_orders": [],
     "start_all_orders" : [
-        { "ingredients" : ["tomato", "lettuces"]}
+        { "ingredients" : ["tomato", "lettuce"]}
     ],
     "rew_shaping_params": None
 }
