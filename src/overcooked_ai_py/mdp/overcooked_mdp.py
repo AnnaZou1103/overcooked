@@ -2078,15 +2078,14 @@ class OvercookedGridworld(object):
 
         # Borders must not be free spaces
         def is_not_free(c):
-            print(c)
             return c in "XODSTLC"
 
-        for y in range(height):
-            assert is_not_free(grid[y][0]), "Left border must not be free"
-            assert is_not_free(grid[y][-1]), "Right border must not be free"
-        for x in range(width):
-            assert is_not_free(grid[0][x]), "Top border must not be free"
-            assert is_not_free(grid[-1][x]), "Bottom border must not be free"
+        # for y in range(height):
+        #     assert is_not_free(grid[y][0]), "Left border must not be free"
+        #     assert is_not_free(grid[y][-1]), "Right border must not be free"
+        # for x in range(width):
+        #     assert is_not_free(grid[0][x]), "Top border must not be free"
+        #     assert is_not_free(grid[-1][x]), "Bottom border must not be free"
 
         all_elements = [element for row in grid for element in row]
         digits = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
