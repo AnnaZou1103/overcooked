@@ -107,17 +107,25 @@ LAYOUTS_WITH_DATA_2019 = set(
 )
 LAYOUTS_WITH_DATA_2020 = set(
     [
-        "asymmetric_advantages_tomato",
         "counter_circuit",
-        "cramped_corridor",
-        "inverse_marshmallow_experiment",
-        "marshmallow_experiment",
-        "marshmallow_experiment_coordination",
-        "soup_coordination",
-        "you_shall_not_pass",
+        "cramped_room",
         "full_divider",
         "open_divider",
-        "partial_divider"
-    ]
+        "wall_partial_divider_salad",
+        "wall_partial_divider_burger",
+        "half_wall_partial_divider_salad",
+        "half_wall_partial_divider_burger",
+        "wall_full_divider_berger",
+        "wall_full_divider_salad",
+        "half_wall_full_divider_berger",
+        "half_wall_full_divider_salad",
+        "wall_circuit_salad",
+        "wall_circuit_burger",
+        "wall_three_room_salad",
+        "wall_three_room_burger",
+        "half_wall_three_room_salad",
+        "half_wall_three_room_burger"
+    ],
 )
+
 LAYOUTS_WITH_DATA = LAYOUTS_WITH_DATA_2019.union(LAYOUTS_WITH_DATA_2020)

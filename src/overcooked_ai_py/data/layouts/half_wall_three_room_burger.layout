@@ -1,0 +1,16 @@
+{
+    "grid":  """XXDWBXXXX
+                X  W  1 X
+                K  X    X
+                X  W    X
+                S  WWWXWW
+                T  W   2X
+                X2 L    P
+                X  W    X
+                XXXWXMXXX""",
+    "start_bonus_orders": [],
+    "start_all_orders" : [
+        { "ingredients" : ["bun", "beef", "tomato", "lettuce"]}
+    ],
+    "rew_shaping_params": None
+}

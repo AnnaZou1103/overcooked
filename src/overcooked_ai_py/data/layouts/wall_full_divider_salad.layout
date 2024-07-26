@@ -1,11 +1,11 @@
 {
-    "grid":  """XXXXXTX
-                C 1X2 L
-                C  X  X
+    "grid":  """XXXWLOX
+                X 3W1 X
+                X  W  X
                 S  X  X
-                X  X  X
-                X  X  D
-                XXXXXDX""",
+                X  W2 K
+                X  W  X
+                XXDWTXX""",
     "start_bonus_orders": [],
     "start_all_orders" : [
         { "ingredients" : ["tomato", "lettuce"]}

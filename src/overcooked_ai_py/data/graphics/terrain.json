@@ -80,7 +80,7 @@
 				"h": 80
 			}
 		},
-		"cutboard.png": {
+		"knife.png": {
 			"frame": {
 				"x": 332,
 				"y": 0,
@@ -143,6 +143,106 @@
 		"lettuces.png": {
 			"frame": {
 				"x": 581,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"sourceSize": {
+				"w": 80,
+				"h": 80
+			}
+		},
+		"wall.png": {
+			"frame": {
+				"x": 664,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"sourceSize": {
+				"w": 80,
+				"h": 80
+			}
+		},
+		"cheese.png": {
+			"frame": {
+				"x": 747,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"sourceSize": {
+				"w": 80,
+				"h": 80
+			}
+		},
+		"bun.png": {
+			"frame": {
+				"x": 830,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"sourceSize": {
+				"w": 80,
+				"h": 80
+			}
+		},
+		"beef.png": {
+			"frame": {
+				"x": 913,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 80,
+				"h": 80
+			},
+			"sourceSize": {
+				"w": 80,
+				"h": 80
+			}
+		},
+		"pot.png": {
+			"frame": {
+				"x": 996,
 				"y": 0,
 				"w": 80,
 				"h": 80

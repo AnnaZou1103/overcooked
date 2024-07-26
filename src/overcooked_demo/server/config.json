@@ -1,10 +1,26 @@
 {
     "logfile" : "app.log",
-    "layouts" : ["counter_circuit", "cramped_room",
+    "layouts" : [
+        "counter_circuit",
+        "cramped_room",
         "full_divider",
         "open_divider",
-        "partial_divider"
+        "wall_partial_divider_salad",
+        "wall_partial_divider_burger",
+        "half_wall_partial_divider_salad",
+        "half_wall_partial_divider_burger",
+        "wall_full_divider_berger",
+        "wall_full_divider_salad",
+        "half_wall_full_divider_berger",
+        "half_wall_full_divider_salad",
+        "wall_circuit_salad",
+        "wall_circuit_burger",
+        "wall_three_room_salad",
+        "wall_three_room_burger",
+        "half_wall_three_room_salad",
+        "half_wall_three_room_burger"
     ],
+    "MAX_GAMES" : 10,
     "MAX_GAMES" : 10,
     "MAX_GAME_LENGTH" : 120,
     "AGENT_DIR" : "./static/assets/agents",

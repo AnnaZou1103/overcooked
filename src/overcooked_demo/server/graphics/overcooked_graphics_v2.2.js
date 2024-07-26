@@ -145,12 +145,17 @@ class OvercookedScene extends Phaser.Scene {
         let terrain_to_img = {
             ' ': 'floor.png',
             'X': 'counter.png',
-            'C': 'cutboard.png',
+            'K': 'knife.png',
             'O': 'onions.png',
             'T': 'tomatoes.png',
             'D': 'dishes.png',
             'S': 'serve.png',
-            'L': 'lettuces.png'
+            'L': 'lettuces.png',
+            'W': 'wall.png',
+            'C': 'cheese.png',
+            'B': 'bun.png',
+            'M': 'beef.png',
+            'P': 'pot.png'
         };
         let pos_dict = this.terrain;
         for (let row in pos_dict) {

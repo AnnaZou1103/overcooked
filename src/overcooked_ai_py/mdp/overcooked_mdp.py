@@ -16,15 +16,18 @@ from overcooked_ai_py.utils import (
 
 
 class Recipe:
-    MAX_NUM_INGREDIENTS = 3
+    MAX_NUM_INGREDIENTS = 4
 
     TOMATO = "tomato"
     ONION = "onion"
     LETTUCE = "lettuce"
-    ALL_INGREDIENTS = [ONION, TOMATO, LETTUCE]
+    BUN = 'bun'
+    CHEESE = 'cheese'
+    BEEF = 'beef'
+    ALL_INGREDIENTS = [ONION, TOMATO, LETTUCE, BUN, CHEESE, BEEF]
 
     ALL_RECIPES_CACHE = {}
-    STR_REP = {"tomato": "†", "onion": "ø", "lettuce": "$"}
+    STR_REP = {"tomato": "†", "onion": "ø", "lettuce": "$", "bun": "∫", "cheese": "^", "beef":"µ"}
 
     _computed = False
     _configured = False
@@ -73,6 +76,9 @@ class Recipe:
         num_tomatoes = len([_ for _ in self.ingredients if _ == Recipe.TOMATO])
         num_onions = len([_ for _ in self.ingredients if _ == Recipe.ONION])
         num_lettuces = len([_ for _ in self.ingredients if _ == Recipe.LETTUCE])
+        num_buns = len([_ for _ in self.ingredients if _ == Recipe.BUN])
+        num_cheeses = len([_ for _ in self.ingredients if _ == Recipe.CHEESE])
+        num_beef = len([_ for _ in self.ingredients if _ == Recipe.BEEF])
 
         mixed_mask = int(bool(num_tomatoes * num_onions * num_lettuces))
         mixed_shift = (Recipe.MAX_NUM_INGREDIENTS + 1) ** len(
@@ -413,7 +419,7 @@ class ObjectState(object):
         self._position = new_pos
 
     def is_valid(self):
-        return self.name in ["onion", "tomato", "dish", "lettuce"]
+        return self.name in ["onion", "tomato", "dish", "lettuce", "bun", "cheese", "beef"]
 
     def deepcopy(self):
         return ObjectState(self.name, self.position)
