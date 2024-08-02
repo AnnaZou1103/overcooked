@@ -18,7 +18,7 @@ var DIRECTION_TO_NAME = {
 };
 
 var scene_config = {
-    player_colors : {0: 'blue', 1: 'green'},
+    player_colors : {0: 'blue', 1: 'green', 2: 'orange'},
     tileSize : 80,
     animation_duration : ANIMATION_DURATION,
     show_post_cook_time : false,
@@ -50,6 +50,9 @@ function drawState(state) {
 // Invoked at 'start_game' event
 function graphics_start(graphics_config) {
     graphics = new GraphicsManager(game_config, scene_config, graphics_config);
+    console.log(game_config, scene_config, graphics_config);
+    console.log(scene_config);
+    console.log(graphics_config);
 };
 
 // Invoked at 'end_game' event
@@ -152,10 +155,10 @@ class OvercookedScene extends Phaser.Scene {
             'S': 'serve.png',
             'L': 'lettuces.png',
             'W': 'wall.png',
-            'C': 'cheese.png',
-            'B': 'bun.png',
-            'M': 'beef.png',
-            'P': 'pot.png'
+            'C': 'cheeses.png',
+            'B': 'buns.png',
+            'M': 'beefs.png',
+            'P': 'pots.png'
         };
         let pos_dict = this.terrain;
         for (let row in pos_dict) {
@@ -329,6 +332,21 @@ class OvercookedScene extends Phaser.Scene {
                 }
                 else if (obj.name === 'dish') {
                     spriteframe = "dish.png";
+                }
+                else if (obj.name === 'lettuce') {
+                    spriteframe = "lettuce.png";
+                }
+                else if (obj.name === 'bun') {
+                    spriteframe = "bun.png";
+                }
+                else if (obj.name === 'cheese') {
+                    spriteframe = "cheese.png";
+                }
+                else if (obj.name === 'beef') {
+                    spriteframe = "beef.png";
+                }
+                else if (obj.name === 'pot') {
+                    spriteframe = "pot.png";
                 }
                 let objsprite = this.add.sprite(
                     this.tileSize*x,

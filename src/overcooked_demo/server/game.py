@@ -627,9 +627,6 @@ class OvercookedGame(Game):
 
         # Sanity check at start of each game
         if not self.npc_players.union(self.human_players) == set(self.players):
-            print(self.human_players)
-            print(self.npc_players)
-            print( self.players)
             raise ValueError("Inconsistent State")
 
         self.curr_layout = self.layouts.pop()

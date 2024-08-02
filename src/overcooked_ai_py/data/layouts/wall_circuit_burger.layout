@@ -1,10 +1,10 @@
 {
     "grid":  """XXXLXPX
-                X    3X
-                X  W 2X
-                S  X  X
-                M  W 3D
-                X 1   X
+                X2    X
+                X 3W 1X
+                S  T  X
+                M  W  D
+                X     X
                 XXKXXBX""",
     "start_bonus_orders": [],
     "start_all_orders" : [
