@@ -20,7 +20,7 @@ from threading import Lock
 import game
 from flask import Flask, jsonify, render_template, request
 from flask_socketio import SocketIO, emit, join_room, leave_room
-from game import Game, OvercookedGame, OvercookedTutorial
+from game import Game, OvercookedGame
 from utils import ThreadSafeDict, ThreadSafeSet
 
 ### Thoughts -- where I'll log potential issues/ideas as they come up
@@ -60,10 +60,10 @@ MAX_GAMES = CONFIG["MAX_GAMES"]
 MAX_FPS = CONFIG["MAX_FPS"]
 
 # Default configuration for predefined experiment
-PREDEFINED_CONFIG = json.dumps(CONFIG["predefined"])
+# PREDEFINED_CONFIG = json.dumps(CONFIG["predefined"])
 
 # Default configuration for tutorial
-TUTORIAL_CONFIG = json.dumps(CONFIG["tutorial"])
+# TUTORIAL_CONFIG = json.dumps(CONFIG["tutorial"])
 
 # Global queue of available IDs. This is how we synch game creation and keep track of how many games are in memory
 FREE_IDS = queue.Queue(maxsize=MAX_GAMES)
@@ -94,8 +94,7 @@ USER_ROOMS = ThreadSafeDict()
 
 # Mapping of string game names to corresponding classes
 GAME_NAME_TO_CLS = {
-    "overcooked": OvercookedGame,
-    "tutorial": OvercookedTutorial,
+    "overcooked": OvercookedGame
 }
 
 game._configure(MAX_GAME_LENGTH, AGENT_DIR)
@@ -368,27 +367,10 @@ def index():
     )
 
 
-@app.route("/predefined")
-def predefined():
-    uid = request.args.get("UID")
-    num_layouts = len(CONFIG["predefined"]["experimentParams"]["layouts"])
-
-    return render_template(
-        "predefined.html",
-        uid=uid,
-        config=PREDEFINED_CONFIG,
-        num_layouts=num_layouts,
-    )
-
 
 @app.route("/instructions")
 def instructions():
     return render_template("instructions.html", layout_conf=LAYOUT_GLOBALS)
-
-
-@app.route("/tutorial")
-def tutorial():
-    return render_template("tutorial.html", config=TUTORIAL_CONFIG)
 
 
 @app.route("/debug")
@@ -493,6 +475,7 @@ def on_create(data):
             return
 
         params = data.get("params", {})
+        print(params)
 
         creation_params(params)
 

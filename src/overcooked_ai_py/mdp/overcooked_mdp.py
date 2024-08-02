@@ -230,7 +230,7 @@ class Recipe:
         cls._conf = conf
         cls._configured = True
         cls._computed = False
-        cls.MAX_NUM_INGREDIENTS = conf.get("max_num_ingredients", 3)
+        cls.MAX_NUM_INGREDIENTS = conf.get("max_num_ingredients", 4)
 
         cls._cook_time = None
         cls._delivery_reward = None
